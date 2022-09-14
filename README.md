@@ -26,6 +26,7 @@ instance: instance name, it must be unique in the farm. it should be automatical
 environment: reference environment of the instance
 service.name: service name, this information is known to the client who uses it to query and get the endpoints where the service instances are available
 service.version: service version
+
 **Request payload**
 ```json
 {
@@ -42,6 +43,7 @@ service.version: service version
 
 ### Confirm
 This resource allows an instance to confirm its availability. When invoked updates a timestamp useful to the **Resolve** resource to select and sort the endpoints that are returned in the response. If a service has a confirm time too far in time, it is put at the bottom of the list or can be excluded from it if it exceeds a certain limit.
+
 **Request payload**
 ```json
 {
@@ -53,6 +55,7 @@ This resource allows an instance to confirm its availability. When invoked updat
 This resource allows clients to resolve a service name by getting a list of endpoints that implement the service.
 The request contains the name of the service and context information useful for the server to select the appropriate services to return to the client. The response contains the list of endpoints that implement the service.
 For each endpoint, useful information is provided to be able to invoke it. **TODO define authentication and authorization**
+
 **Request payload**
 ```json
 {

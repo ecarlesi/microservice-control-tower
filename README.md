@@ -31,13 +31,13 @@ service.version: service version
 ```json
 {
     "instance": "AS43-3343",
-    "environment": "dev",
+    "environment": "production",
     "service":
     {
         "name": "calculator",
-        "version": "alpha 3"
+        "version": "1.0"
     },
-    "url": "https://192.168.1.12:5033"
+    "url": "https://192.168.1.100:5033"
 }
 ```
 
@@ -78,11 +78,11 @@ For each endpoint, useful information is provided to be able to invoke it. **TOD
     },
     "query":
     {
-        "environment": "dev",
+        "environment": "production",
         "service":
         {
             "name": "calculator",
-            "version": "alpha 3"
+            "version": "1.0"
         }
     }
 }
@@ -93,22 +93,26 @@ For each endpoint, useful information is provided to be able to invoke it. **TOD
 {
     "query":
     {
-        "environment": "dev",
+        "environment": "production",
         "service":
         {
             "name": "calculator",
-            "version": "alpha 3"
+            "version": "1.0"
         }
     },
     "endpoints":
     [
         {
             "instance": "AS43-3343",
-            "url": "https://192.168.1.12:5033"
+            "url": "https://192.168.1.100:5033"
         },
         {
             "instance": "AS43-3663",
-            "url": "https://192.168.1.200:1099"
+            "url": "https://192.168.1.105:1099"
+        },
+        {
+            "instance": "AS43-3663",
+            "url": "https://192.168.1.178:4533"
         }
     ]
 }

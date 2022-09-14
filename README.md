@@ -1,9 +1,9 @@
-# Microservice Service Locator
+# Microservice Instance Locator
 
 This project wants to solve a problem that I have faced several times during the development of microservices-based solutions: how to avoid having the service endpoints written in the code of the client components? The idea behind this project is that a client does not need to know where a service they need is located, knowing the name of the service they can get the details of how to contact it at runtime.
 
 ### Definitions
-**Farm**: represents a set of microservices managed by a Microservice Service Locator installation. 
+**Farm**: represents a set of microservices managed by a Microservice Instance Locator installation. 
 
 **Instance**: it is a microservice implementation. multiple instances of the same implementation can be present in parallel in a **farm**, this to allow clients to have alternatives in case of problems in using an instance. In the event of an error, clients may decide to use another instance. Having multiple instances of the same implementation also allows you to implement charge balancing logic without having to act on the infrastructure.
 

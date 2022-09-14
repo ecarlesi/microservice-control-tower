@@ -2,16 +2,16 @@
 
 This project wants to solve a problem that I have faced several times during the development of microservices-based solutions: how to avoid having the service endpoints written in the code of the client components? The idea behind this project is that a client does not need to know where a service they need is located, knowing the name of the service they can get the details of how to contact it at runtime.
 
-<img width="1158" alt="image" src="https://user-images.githubusercontent.com/195652/190275949-db83f2c9-e46d-4037-8474-80afa6ca4241.png">
-
-<img width="1374" alt="image" src="https://user-images.githubusercontent.com/195652/190277267-03bc2849-eb86-44f8-af8f-deb8f4429ade.png">
-
 ### Definitions
 **Farm**: represents a set of microservices managed by a Microservice Instance Locator installation. 
 
 **Instance**: it is a microservice implementation. multiple instances of the same implementation can be present in parallel in a **farm**, this to allow clients to have alternatives in case of problems in using an instance. In the event of an error, clients may decide to use another instance. Having multiple instances of the same implementation also allows you to implement charge balancing logic without having to act on the infrastructure.
 
 **Environment**: the environment identifies an instance that differentiates itself from other instances that are the same at the implementation level but different from the point of view of the configuration. For example, we can have the same service distributed in different instances with different configurations useful for defining the development, testing and production environments. Another possible scenario is that in which a solution manages different tenants that perhaps isolate the data at the database level and therefore only have different database configuration to use.
+
+<img width="1158" alt="image" src="https://user-images.githubusercontent.com/195652/190275949-db83f2c9-e46d-4037-8474-80afa6ca4241.png">
+
+<img width="1374" alt="image" src="https://user-images.githubusercontent.com/195652/190277267-03bc2849-eb86-44f8-af8f-deb8f4429ade.png">
 
 ## Project goals
 1. The service should be as light as possible. Only the functionality that is really needed will need to be implemented.

@@ -2,6 +2,8 @@
 
 This project wants to solve a problem that I have faced several times during the development of microservices-based solutions: how to avoid having the service endpoints written in the code of the client components? The idea behind this project is that a client does not need to know where a service they need is located, knowing the name of the service they can get the details of how to contact it at runtime.
 
+<img width="1158" alt="image" src="https://user-images.githubusercontent.com/195652/190275949-db83f2c9-e46d-4037-8474-80afa6ca4241.png">
+
 ### Definitions
 **Farm**: represents a set of microservices managed by a Microservice Instance Locator installation. 
 

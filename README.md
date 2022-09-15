@@ -5,11 +5,20 @@ This project wants to solve a problem that I have faced several times during the
 ### Definitions
 **Farm**: represents a set of microservices managed by a **MIL** installation. 
 
-**Instance**: it is a microservice implementation. multiple instances of the same implementation can be present in parallel in a **farm**, this to allow clients to have alternatives in case of problems in using an instance. In the event of an error, clients may decide to use another instance. Having multiple instances of the same implementation also allows you to implement charge balancing logic without having to act on the infrastructure.
+**Instance**: it is a microservice implementation. Multiple instances of the same implementation can be present in parallel in a **farm**, this to allow clients to have alternatives in case of problems in using an instance. In the event of an error, clients may decide to use another instance. Having multiple instances of the same implementation also allows you to implement charge balancing logic without having to act on the infrastructure.
 
 **Environment**: the environment identifies an instance that differentiates itself from other instances that are the same at the implementation level but different from the point of view of the configuration. For example, we can have the same service distributed in different instances with different configurations useful for defining the development, testing and production environments. Another possible scenario is that in which a solution manages different tenants that perhaps isolate the data at the database level and therefore only have different database configuration to use.
 
 <img width="1158" alt="image" src="https://user-images.githubusercontent.com/195652/190275949-db83f2c9-e46d-4037-8474-80afa6ca4241.png">
+
+## Operation diagram
+
+- The instance starts and need to register itself in **MIL**. Af first it invokes the **Identities** resource to find out which are the trusted identity providers for the **MIL**. In response, it gets the list of endpoints that can issue a valid JWT token for the **MIL**.
+- The instance invokes one of the identity provider it received from the **Identities** call made to the **MIL** previously and obtains a valid JWT token to invoke the **MIL** to register itself.
+- The instance, using the JWT token, invoke the resource **Register** to register itself. After this call this instance will be available in the farm.
+- The client needs to invoke the "calculator" service to perform a calculation. The customer does not know which microservices implement this functionality or where they are located. But it knows the URL to access the MIL. First, it makes a call to the **Identities** resource to find out which are the trusted identity providers for the **MIL**. In response, it gets the list of endpoints that can issue a valid JWT token for the **MIL**.
+- The client invokes one of the identity provider it received from the **Identities** call made to the **MIL** previously and obtains a valid JWT token to invoke the **MIL** to resolve the instance name. The response from **MIL** will contains the list of instance URL that implement the service "calculator".
+- The client now knows how to invoke the microservice it need.
 
 ## MIL goals
 1. The service should be as light as possible. Only the functionality that is really needed will need to be implemented.

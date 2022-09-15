@@ -9,10 +9,12 @@ This project wants to solve a problem that I have faced several times during the
 
 **Environment**: the environment identifies an instance that differentiates itself from other instances that are the same at the implementation level but different from the point of view of the configuration. For example, we can have the same service distributed in different instances with different configurations useful for defining the development, testing and production environments. Another possible scenario is that in which a solution manages different tenants that perhaps isolate the data at the database level and therefore only have different database configuration to use.
 
+**Idntity provider**: it is a service enabled to delivery a JWT token trusted by the **MIL** and usable by clients and microservice instances to authorize the comunication. When an instance registers with a **MIL**, it agrees to use the same identity provider used by the **MIL**.
+
+## Farm example
 <img width="1158" alt="image" src="https://user-images.githubusercontent.com/195652/190275949-db83f2c9-e46d-4037-8474-80afa6ca4241.png">
 
 ## Operation diagram
-
 - The instance starts and need to register itself in **MIL**. Af first it invokes the **Identities** resource to find out which are the trusted identity providers for the **MIL**. In response, it gets the list of endpoints that can issue a valid JWT token for the **MIL**.
 - The instance invokes one of the identity provider it received from the **Identities** call made to the **MIL** previously and obtains a valid JWT token to invoke the **MIL** to register itself.
 - The instance, using the JWT token, invoke the resource **Register** to register itself. After this call this instance will be available in the farm.

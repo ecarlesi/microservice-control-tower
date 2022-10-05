@@ -3,9 +3,9 @@
 This project starts from the need to make architectures based on microservices more dynamic.
 
 Below I illustrate some of the constraints that this project wants to solve:
-1. Clients don't need to know the endpoints of the services they need to consume, as long as they know the name.
-1. I can install multiple instances of the same microservice to improve the performance of my solution or to ensure a better level of service in terms of uptime.
-1. The permissions to access a microservice must be modifiable at runtime and their modification must not require deploy or reboot.
+- Clients don't need to know the endpoints of the services they need to consume, as long as they know the name.
+- I can install multiple instances of the same microservice to improve the performance of my solution or to ensure a better level of service in terms of uptime.
+- The permissions to access a microservice must be modifiable at runtime and their modification must not require deploy or reboot.
 
 ### Definitions
 **Farm**: represents a set of microservices managed by a **MCT** installation. 

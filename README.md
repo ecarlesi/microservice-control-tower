@@ -58,6 +58,44 @@ service.version: service version
 }
 ```
 
+**Response payload**
+```json
+{
+    "settings": 
+    [
+        {
+            "key": "a",
+            "value": "value a"
+        },
+        {
+            "key": "b",
+            "value": "value b"
+        }
+    ],
+    "authorizations": 
+    [
+        {
+            "role": "admins",
+            "actions": 
+            [
+                {
+                    "action": "read",
+                    "object": "database-x"
+                },
+                {
+                    "action": "read",
+                    "object": "database-y"
+                },
+                {
+                    "action": "write",
+                    "object": "database-y"
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### Confirm
 This resource allows an instance to confirm its availability. When invoked updates a timestamp useful to the **Resolve** resource to select and sort the endpoints that are returned in the response. If a service has a confirm time too far in time, it is put at the bottom of the list or can be excluded from it if it exceeds a certain limit.
 
@@ -65,6 +103,58 @@ This resource allows an instance to confirm its availability. When invoked updat
 ```json
 {
     "instance": "AS43-3343"
+}
+```
+
+**Response payload**
+```json
+{
+    "settings": 
+    [
+        {
+            "key": "a",
+            "value": "value a"
+        },
+        {
+            "key": "b",
+            "value": "value b"
+        }
+    ],
+    "authorizations": 
+    [
+        {
+            "role": "admins",
+            "actions": 
+            [
+                {
+                    "action": "read",
+                    "object": "database-x"
+                },
+                {
+                    "action": "read",
+                    "object": "database-y"
+                },
+                {
+                    "action": "write",
+                    "object": "database-y"
+                }
+            ]
+        },
+        {
+            "role": "sys-users",
+            "actions": 
+            [
+                {
+                    "action": "read",
+                    "object": "database-x"
+                },
+                {
+                    "action": "read",
+                    "object": "database-y"
+                }
+            ]
+        }
+    ]
 }
 ```
 

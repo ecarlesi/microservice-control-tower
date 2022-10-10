@@ -26,6 +26,7 @@ Below I illustrate some of the constraints that this project wants to solve:
 - The client needs to invoke the "calculator" service to perform a calculation. The client does not know which microservices implement this functionality or where they are located, but it knows the URL to access the **MCT**. First, it makes a call to the **Identities** resource to find out which are the trusted identity providers for the **MCT**. In response, it gets the list of endpoints that can issue a valid JWT token for the **MCT**.
 - The client invokes one of the identity provider it received from the **Identities** call made to the **MCT** previously and obtains a valid JWT token to invoke the **MCT** to resolve the instance name. The response from **MCT** will contains the list of instance URL that implement the service "calculator".
 - The client now knows how to invoke the microservice it need.
+- The client will use the previously received JWT token to eventually invoke all other microservices in the farm.
 
 ## MCT goals
 1. The service should be as light as possible. Only the functionality that is really needed will need to be implemented.
